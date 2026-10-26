@@ -11,5 +11,9 @@ data class Guest(
     val name: String,
     val phone: String,
     val email: String = "",
-    val rsvpStatus: String = "Pending" // Pending, Accepted, Declined
+    val rsvpStatus: String = "Pending",   // Pending, Accepted, Declined
+    val inviteToken: String = "",         // secret per-guest token for the RSVP link
+    val partySize: Int = 1,               // how many people the guest is bringing in total
+    val note: String = "",                // optional message from the guest
+    val respondedAt: Long = 0             // time of the guest's reply (0 = no reply yet)
 )
