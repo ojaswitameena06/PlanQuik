@@ -2,4 +2,39 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand -->
+    <color name="brand_primary">#4F46E5</color>
+    <color name="brand_primary_dark">#3730A3</color>
+    <color name="brand_primary_container">#E0E7FF</color>
+    <color name="brand_secondary">#0D9488</color>
+    <color name="brand_secondary_container">#CCFBF1</color>
+
+    <!-- Light surfaces -->
+    <color name="bg_light">#F6F7FB</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="text_primary_light">#111827</color>
+    <color name="text_secondary_light">#6B7280</color>
+    <color name="outline_light">#E5E7EB</color>
+
+    <!-- Dark surfaces -->
+    <color name="bg_dark">#0F1115</color>
+    <color name="surface_dark">#1A1D24</color>
+    <color name="text_primary_dark">#F3F4F6</color>
+    <color name="text_secondary_dark">#9CA3AF</color>
+    <color name="outline_dark">#2B303B</color>
+    <color name="brand_primary_on_dark">#A5B4FC</color>
+
+    <!-- Event category colours -->
+    <color name="cat_birthday">#EC4899</color>
+    <color name="cat_wedding">#F59E0B</color>
+    <color name="cat_meeting">#3B82F6</color>
+    <color name="cat_party">#8B5CF6</color>
+    <color name="cat_conference">#10B981</color>
+    <color name="cat_other">#6B7280</color>
+
+    <!-- RSVP status colours -->
+    <color name="rsvp_accepted">#16A34A</color>
+    <color name="rsvp_declined">#DC2626</color>
+    <color name="rsvp_pending">#D97706</color>
 </resources>

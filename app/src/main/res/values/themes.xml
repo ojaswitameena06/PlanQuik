@@ -1,9 +1,43 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.EventPlanner" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <style name="Theme.EventPlanner" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/brand_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/brand_primary_dark</item>
+        <item name="colorSecondary">@color/brand_secondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/brand_secondary_container</item>
+
+        <item name="android:colorBackground">@color/bg_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_primary_light</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary_light</item>
+        <item name="colorOutline">@color/outline_light</item>
+        <item name="colorOutlineVariant">@color/outline_light</item>
+        <item name="colorError">@color/rsvp_declined</item>
+
+        <item name="android:statusBarColor">@color/bg_light</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.PlanQuik.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.PlanQuik.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.PlanQuik.Large</item>
     </style>
 
-    <style name="Theme.EventPlanner" parent="Base.Theme.EventPlanner" />
+    <style name="ShapeAppearance.PlanQuik.Small" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.PlanQuik.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearance.PlanQuik.Large" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
 </resources>

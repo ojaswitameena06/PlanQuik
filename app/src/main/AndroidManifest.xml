@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EventPlanner">
+        android:name=".PlanQuikApp"
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -44,10 +45,6 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".EventDetailActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".SettingsActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
