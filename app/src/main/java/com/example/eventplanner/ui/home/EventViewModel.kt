@@ -11,6 +11,7 @@ import com.example.eventplanner.repository.EventRepository
 import com.example.eventplanner.sync.FirebaseSyncHelper
 import kotlinx.coroutines.launch
 import com.google.firebase.auth.FirebaseAuth
+import com.example.eventplanner.sync.InviteSync
 
 class EventViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -32,11 +33,13 @@ class EventViewModel(application: Application) : AndroidViewModel(application) {
     fun updateEvent(event: Event) = viewModelScope.launch {
         repository.updateEvent(event)
         FirebaseSyncHelper.pushEvent(event)
+        InviteSync.refreshEventInvites(getApplication<Application>(), event)
     }
 
     fun deleteEvent(event: Event) = viewModelScope.launch {
         repository.deleteEvent(event)
         FirebaseSyncHelper.deleteEvent(event.id)
+        InviteSync.deleteInvitesForEvent(getApplication<Application>(), event.id)
     }
 
     suspend fun getEventById(eventId: Long) = repository.getEventById(eventId)

@@ -12,6 +12,7 @@ import com.example.eventplanner.LoginActivity
 import com.example.eventplanner.R
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.firebase.auth.FirebaseAuth
+import com.example.eventplanner.sync.RsvpSync
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
+            RsvpSync.stop()
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

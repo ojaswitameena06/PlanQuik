@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.eventplanner.notifications.NotificationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.eventplanner.sync.RsvpSync
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         NotificationHelper.createNotificationChannel(this)
         askNotificationPermission()
+        RsvpSync.start(applicationContext)
 
         val navHost = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment

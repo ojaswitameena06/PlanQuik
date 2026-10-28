@@ -48,6 +48,9 @@
             android:name=".EventDetailActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".InvitationActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

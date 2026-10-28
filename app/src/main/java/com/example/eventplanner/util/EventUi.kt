@@ -5,12 +5,15 @@ import androidx.core.content.ContextCompat
 import com.example.eventplanner.R
 import com.example.eventplanner.data.entity.Event
 import com.google.firebase.auth.FirebaseAuth
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 object EventUi {
+
+    val EXPENSE_CATEGORIES = listOf("Venue", "Food", "Decor", "Gifts", "Other")
 
     fun categoryColor(context: Context, category: String): Int {
         val res = when (category) {
@@ -22,6 +25,25 @@ object EventUi {
             else -> R.color.cat_other
         }
         return ContextCompat.getColor(context, res)
+    }
+
+    fun expenseColor(context: Context, category: String): Int {
+        val res = when (category) {
+            "Venue" -> R.color.exp_venue
+            "Food" -> R.color.exp_food
+            "Decor" -> R.color.exp_decor
+            "Gifts" -> R.color.exp_gifts
+            else -> R.color.exp_other
+        }
+        return ContextCompat.getColor(context, res)
+    }
+
+    fun money(amount: Double): String {
+        val whole = amount % 1.0 == 0.0
+        val nf = NumberFormat.getNumberInstance(Locale("en", "IN"))
+        nf.minimumFractionDigits = if (whole) 0 else 2
+        nf.maximumFractionDigits = if (whole) 0 else 2
+        return "₹" + nf.format(amount)
     }
 
     fun eventMillis(event: Event): Long? = try {

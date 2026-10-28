@@ -1,10 +1,13 @@
 package com.example.eventplanner.adapter
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eventplanner.R
 import com.example.eventplanner.data.entity.Guest
@@ -17,6 +20,7 @@ class GuestAdapter(
 ) : RecyclerView.Adapter<GuestAdapter.GuestViewHolder>() {
 
     class GuestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvAvatar: TextView = itemView.findViewById(R.id.tvGuestAvatar)
         val tvName: TextView = itemView.findViewById(R.id.tvGuestName)
         val tvPhone: TextView = itemView.findViewById(R.id.tvGuestPhone)
         val tvRsvp: TextView = itemView.findViewById(R.id.tvGuestRsvp)
@@ -32,16 +36,28 @@ class GuestAdapter(
 
     override fun onBindViewHolder(holder: GuestViewHolder, position: Int) {
         val guest = guests[position]
-        holder.tvName.text = guest.name
-        holder.tvPhone.text = guest.phone
-        holder.tvRsvp.text = guest.rsvpStatus
+        val context = holder.itemView.context
 
-        val color = when (guest.rsvpStatus) {
-            "Accepted" -> "#2E7D32"
-            "Declined" -> "#C62828"
-            else -> "#F9A825"
+        val colorRes = when (guest.rsvpStatus) {
+            "Accepted" -> R.color.rsvp_accepted
+            "Declined" -> R.color.rsvp_declined
+            else -> R.color.rsvp_pending
         }
-        holder.tvRsvp.setTextColor(android.graphics.Color.parseColor(color))
+        val color = ContextCompat.getColor(context, colorRes)
+
+        holder.tvAvatar.text = guest.name.firstOrNull()?.uppercase() ?: "?"
+        holder.tvName.text = guest.name
+        holder.tvPhone.text = when {
+            guest.note.isNotBlank() -> "“${guest.note}”"
+            else -> guest.phone.ifBlank { guest.email.ifBlank { "No contact details" } }
+        }
+
+        holder.tvRsvp.text =
+            if (guest.rsvpStatus == "Accepted" && guest.partySize > 1) "Accepted · ${guest.partySize}"
+            else guest.rsvpStatus
+        holder.tvRsvp.setTextColor(color)
+        holder.tvRsvp.backgroundTintList =
+            ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 40))
 
         holder.tvRsvp.setOnClickListener { onRsvpClick(guest) }
         holder.btnInvite.setOnClickListener { onInviteClick(guest) }

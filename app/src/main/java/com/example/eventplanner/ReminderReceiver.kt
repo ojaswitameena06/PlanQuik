@@ -8,7 +8,7 @@ import com.example.eventplanner.notifications.NotificationHelper
 class ReminderReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val eventTitle = intent.getStringExtra("EVENT_TITLE") ?: "Event Reminder"
+        val eventTitle = intent.getStringExtra("EVENT_TITLE") ?: "Event reminder"
         val eventLocation = intent.getStringExtra("EVENT_LOCATION") ?: ""
         val eventId = intent.getLongExtra("EVENT_ID", 0L)
 
@@ -18,11 +18,6 @@ class ReminderReceiver : BroadcastReceiver() {
             "Your event is coming up soon"
         }
 
-        NotificationHelper.showNotification(
-            context,
-            eventId.toInt(),
-            eventTitle,
-            message
-        )
+        NotificationHelper.showNotification(context, eventId.toInt(), eventTitle, message, eventId)
     }
 }

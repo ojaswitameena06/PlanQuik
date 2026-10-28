@@ -37,4 +37,10 @@
     <color name="rsvp_accepted">#16A34A</color>
     <color name="rsvp_declined">#DC2626</color>
     <color name="rsvp_pending">#D97706</color>
+    <!-- Expense category colours -->
+    <color name="exp_venue">#6366F1</color>
+    <color name="exp_food">#F59E0B</color>
+    <color name="exp_decor">#EC4899</color>
+    <color name="exp_gifts">#14B8A6</color>
+    <color name="exp_other">#9CA3AF</color>
 </resources>
